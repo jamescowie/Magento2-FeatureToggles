@@ -66,6 +66,7 @@ class ServiceCollection extends AbstractServiceCollection
         $featuretoggleItem = new \Magento\Framework\Object();
         $featuretoggleItem->setFeaturetoggleId($featuretoggle->getFeaturetoggleId());
         $featuretoggleItem->setName($featuretoggle->getName());
+
         return $featuretoggleItem;
     }
 }
