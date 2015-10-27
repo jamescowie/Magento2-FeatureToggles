@@ -20,32 +20,32 @@ class Edit extends Manage
      */
     public function execute()
     {
-//        try {
-//            $warehouse = $this->_initWarehouse();
-//        } catch (\Exception $exception) {
-//            $this->messageManager->addError(__($exception->getMessage()));
-//            /** @var Redirect $resultRedirect */
-//            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-//            $resultRedirect->setPath('warehouse/*');
-//            return $resultRedirect;
-//        }
-//        $data = $this->_objectManager->get('Magento\Backend\Model\Session')->getPageData(true);
-//        if (! empty($data)) {
-//            $warehouse->addData($data);
-//        }
-//        $this->coreRegistry->register('current_warehouse_id', $warehouse->getWarehouseId());
-//        /** @var Page $resultPage */
-//        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-//        $resultPage->getConfig()->getTitle()->prepend(__('Warehouses'));
-//        $resultPage->getConfig()->getTitle()->prepend(
-//            $warehouse->getId() ? $warehouse->getName() : __('New Warehouse')
-//        );
-//        $resultPage->getLayout()->getBlock('admin.block.mx_warehouse.edit')
-//            ->setData('action', $this->getUrl('warehouse/index/save'));
-//        $resultPage->addBreadcrumb(
-//            $warehouse->getId() ? __('Edit Warehouse') : __('New Warehouse'),
-//            $warehouse->getId() ? __('Edit Warehouse') : __('New Warehouse')
-//        );
-//        return $resultPage;
+        try {
+            $featuretoggle = $this->_initFeatureToggle();
+        } catch (\Exception $exception) {
+            $this->messageManager->addError(__($exception->getMessage()));
+            /** @var Redirect $resultRedirect */
+            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+            $resultRedirect->setPath('featuretoggle/*');
+            return $resultRedirect;
+        }
+        $data = $this->_objectManager->get('Magento\Backend\Model\Session')->getPageData(true);
+        if (! empty($data)) {
+            $featuretoggle->addData($data);
+        }
+        $this->coreRegistry->register('current_featuretoggle_id', $featuretoggle->getFeaturetoggleId());
+        /** @var Page $resultPage */
+        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $resultPage->getConfig()->getTitle()->prepend(__('Feature Toggle'));
+        $resultPage->getConfig()->getTitle()->prepend(
+            $featuretoggle->getId() ? $featuretoggle->getName() : __('New Feature Toggle')
+        );
+        $resultPage->getLayout()->getBlock('admin.block.mx_featuretoggle.edit')
+            ->setData('action', $this->getUrl('featuretoggle/index/save'));
+        $resultPage->addBreadcrumb(
+            $featuretoggle->getId() ? __('Edit Feature Toggle') : __('New Feature Toggle'),
+            $featuretoggle->getId() ? __('Edit Feature Toggle') : __('New Feature Toggle')
+        );
+        return $resultPage;
     }
 }

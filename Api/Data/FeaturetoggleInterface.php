@@ -54,5 +54,12 @@ interface FeaturetoggleInterface
      */
     public function setStatus($status);
 
+    /**
+     * Set the status
+     *
+     * @api
+     *
+     * @return mixed
+     */
     public function getStatus();
 }

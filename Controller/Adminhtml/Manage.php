@@ -10,6 +10,10 @@ use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\View\Result\LayoutFactory;
 
+use Jcowie\FeatureToggle\Api\Data\FeaturetoggleInterface;
+use Jcowie\FeatureToggle\Api\Data\FeaturetoggleInterfaceFactory;
+use Jcowie\FeatureToggle\Api\FeaturetoggleRepositoryInterface;
+
 class Manage extends Action
 {
     /**
@@ -38,6 +42,16 @@ class Manage extends Action
     protected $coreRegistry;
 
     /**
+     * @var FeaturetoggleInterfaceFactory
+     */
+    protected $featuretoggleFactory;
+
+    /**
+     * @var FeaturetoggleRepositoryInterface
+     */
+    protected $featuretoggleRepository;
+
+    /**
      * @param Context                      $context
      * @param ForwardFactory               $resultForwardFactory
      * @param LayoutFactory                $resultLayoutFactory
@@ -49,21 +63,37 @@ class Manage extends Action
         ForwardFactory $resultForwardFactory,
         LayoutFactory $resultLayoutFactory,
         PageFactory $resultPageFactory,
-        Registry $coreRegistry
+        Registry $coreRegistry,
+        FeaturetoggleInterfaceFactory $featuretoggleFactory,
+        FeaturetoggleRepositoryInterface $featuretoggleRepository
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
         $this->resultForwardFactory = $resultForwardFactory;
         $this->resultLayoutFactory = $resultLayoutFactory;
         $this->coreRegistry = $coreRegistry;
+        $this->featuretoggleFactory = $featuretoggleFactory;
+        $this->featuretoggleRepository = $featuretoggleRepository;
     }
 
     /**
-     * TODO Implement feature toggle initialisation
+     * Initialise feature toggle based on request
+     *
+     * @return mixed
+     * @throws NoSuchEntityException
      */
     public function _initFeatureToggle()
     {
-
+        $featuretoggleId = (int)$this->getRequest()->getParam('featuretoggle_id');
+        if ($featuretoggleId) {
+            $featuretoggle = $this->featuretoggleRepository->getById($featuretoggleId);
+            if (!$featuretoggle->getFeaturetoggleId()) {
+                throw new NoSuchEntityException('This feature does not exist');
+            }
+        } else {
+            $featuretoggle = $this->featuretoggleFactory->create();
+        }
+        return $featuretoggle;
     }
 
     /**
