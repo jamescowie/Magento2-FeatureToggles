@@ -59,6 +59,14 @@ class Manage extends Action
     }
 
     /**
+     * TODO Implement feature toggle initialisation
+     */
+    public function _initFeatureToggle()
+    {
+
+    }
+
+    /**
      * Customer access rights checking
      *
      * @return bool
