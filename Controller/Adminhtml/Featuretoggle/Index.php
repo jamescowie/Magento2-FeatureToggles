@@ -35,5 +35,5 @@ class Index extends Manage
          */
         $resultPage->addBreadcrumb(__('Manage'), __('Manage'));
 
-        return $resultPage;    }
+        return $resultPage; }
 }
