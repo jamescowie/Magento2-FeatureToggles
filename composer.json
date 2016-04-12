@@ -1,5 +1,5 @@
 {
-  "name": "Jcowie/FeatureToggle",
+  "name": "jcowie/feature-toggle",
   "description": "This module provides support for Feature Toggles within Magento 2",
   "license": "MIT",
   "require": {
