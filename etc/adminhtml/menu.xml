@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Jcowie_FeatureToggle::toggle_add" title="Feature Toggle" module="Jcowie_FeatureToggle" sortOrder="0" parent="Magento_Backend::stores_settings" action="jcowie/featuretoggle" resource="Magento_Cms::page"/>
+        <add id="Jcowie_FeatureToggle::toggle_add" title="Feature Toggle"
+             module="Jcowie_FeatureToggle" sortOrder="0"
+             parent="Magento_Backend::stores_settings" action="jcowie/featuretoggle"
+             resource="Magento_Cms::page"/>
     </menu>
 </config>

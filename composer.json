@@ -1,0 +1,26 @@
+{
+  "name": "Jcowie/FeatureToggle",
+  "description": "This module provides support for Feature Toggles within Magento 2",
+  "license": "MIT",
+  "require": {
+    
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Jcowie\\FeatureToggle\\": ""
+    }
+  },
+  "minimum-stability": "beta",
+  "type": "magento2-module",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Cotya/VcsMapper"
+      ]
+    ]
+  }
+}
